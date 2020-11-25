@@ -24,8 +24,7 @@ The goals / steps of this project are the following:
 [image3]: ./output_step2/straight_lines1_step2_binary.jpg "step2 results"
 [image4]: ./output_step3/straight_lines1_step3_warp_hist.jpg "step3 results"
 [image5]: ./output_step4/straight_lines1_step4_linefit.jpg "step4 results"
-[image6]: ./examples/example_output.jpg "Output"
-[video1]: ./project_video.mp4 "Video"
+[video1]: ./project_video_our.mp4 "Video"
 
 ## [Rubric](https://review.udacity.com/#!/rubrics/571/view) Points
 
@@ -39,7 +38,7 @@ The goals / steps of this project are the following:
 
 SDC_P2 Project report start!!!
 
-### 1. calibration using chessboard images 
+# 1. calibration using chessboard images 
 
 The code for this step is contained in the first code cell of the IPython notebook located in "'SDC_P2.ipynb'" 
 
@@ -51,16 +50,16 @@ I then used the output `objpoints` and `imgpoints` to compute the camera calibra
 
 
 
-## 2. Pipeline using test images
+# 2. Pipeline using test images
 
-### Step1 : Calibrate test image
+## Step1 : Calibrate test image
 
 To demonstrate this step, I will describe how I apply the distortion correction to one of the test images like this one:
 ![alt text][image2]
 
 If want to check the other image results, [click this link](./output_step1)
 
-#### Step2 : Binary test image
+## Step2 : Binary test image
 
 2. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image.  Provide an example of a binary image result.
 
@@ -104,7 +103,7 @@ If want to check the other image results, [click this link](./output_step2)
 
 
 
-#### Step3 : Warp and Hist test image 
+## Step3 : Warp and Hist test image 
 
 
 The code for my perspective transform includes a function called `warper()`, The `warper()` function takes as inputs an image (`img`), as well as source (`src`) and destination (`dst`) points.  I chose the hardcode the source and destination points in the following manner:
@@ -139,7 +138,7 @@ I verified that my perspective transform was working as expected by drawing the 
 
 If want to check the other image results, [click this link](./output_step3)
 
-#### Step4 : Line fitting test image
+## Step4 : Line fitting test image
 
 Then I did fit my lane lines with a 2nd order polynomial as follows.
 
@@ -181,25 +180,18 @@ warp_hist_left_bound = warp_histogram[img_size[0]//2 - 400 : img_size[0]//2 - 10
   
 ![alt text][image5]
 
-If want to check the other image results, [click this link](./output_step4)
+If want to check the other image results, [click this link](./output_step4)  
 
-#### 5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
 
-I did this in lines # through # in my code in `my_other_file.py`
 
-#### 6. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly.
 
-I implemented this step in lines # through # in my code in `yet_another_file.py` in the function `map_lane()`.  Here is an example of my result on a test image:
+# 3. Pipeline using test videos
 
-![alt text][image6]
+Through step1 ~ step4 procedure avobe, I try finding lanes on 'project_video.mp4', 'challenge_video.mp4'
 
----
+Here's a my video result
 
-### Pipeline (video)
-
-#### 1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video (wobbly lines are ok but no catastrophic failures that would cause the car to drive off the road!).
-
-Here's a [link to my video result](./project_video.mp4)
+Here's a [link to my video result](./project_video_out.mp4)
 
 ---
 
