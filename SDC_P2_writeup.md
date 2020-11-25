@@ -139,11 +139,49 @@ I verified that my perspective transform was working as expected by drawing the 
 
 If want to check the other image results, [click this link](./output_step3)
 
-#### 4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
+#### Step4 : Line fitting test image
 
-Then I did some other stuff and fit my lane lines with a 2nd order polynomial kinda like this:
+Then I did fit my lane lines with a 2nd order polynomial as follows.
 
+  - Using hist plot, find lane's origin (offset to the each lane) within each boundary  
+    - If max number of pixel within bound is under threshold (=5), previous step's offset is reused (test image uses only current image)
+    
+```python
+warp_hist_left_bound = warp_histogram[img_size[0]//2 - 400 : img_size[0]//2 - 100]
+    warp_hist_right_bound = warp_histogram[img_size[0]//2 + 100 : img_size[0]//2 + 400]
+    
+    if np.max(warp_hist_left_bound) < 5:
+        left_init_offset = left_init_offset_temp
+    else:
+        left_init_offset = np.argmax(warp_hist_left_bound)
+        left_init_offset_temp = left_init_offset
+        
+    if np.max(warp_hist_right_bound) < 5:
+        right_init_offset = right_init_offset_temp
+    else:
+        right_init_offset = np.argmax(warp_hist_right_bound)
+        right_init_offset_temp = right_init_offset
+```
+
+  - Among the pixels in the current image [t], extract the pixels in margin based on the lane line of the previous image [t-1] (test image uses only current image)  
+  
+  
+  - Delete outlier pixels using `np.percentile(left_line_diff, 80, interpolation='linear')`  
+    - `left_line_diff` is absolute 'x' distance between pixel and lane line [t-1] (test image uses only current image)  
+    
+  - stacking with extracted pixels in previous step [t-1] (test image uses only current image)
+  
+  - Calculate temp parameters using `np.polyfit()`   
+  
+  - Using moving average, calculate final parameter of current image [t] (test image uses only current image)  
+    - moving average horizon (=5)
+    
+  - Convert parameter in image space to parameter in real space
+    
+  
 ![alt text][image5]
+
+If want to check the other image results, [click this link](./output_step4)
 
 #### 5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
 
