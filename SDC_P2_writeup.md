@@ -22,7 +22,7 @@ The goals / steps of this project are the following:
 [image1]: ./output_chessboard_cal/calibrated1.jpg "Undistorted"
 [image2]: ./output_step1/straight_lines1_step1_cal.jpg "step1 results"
 [image3]: ./output_step2/straight_lines1_step2_binary.jpg "step2 results"
-[image4]: ./output_step3/straight_lines1_step3_warp & hist.jpg "step3 results"
+[image4]: ./output_step3/straight_lines1_step3_warp_hist.jpg "step3 results"
 [image5]: ./output_step4/straight_lines1_step4_linefit.jpg "step4 results"
 [image6]: ./examples/example_output.jpg "Output"
 [video1]: ./project_video.mp4 "Video"
