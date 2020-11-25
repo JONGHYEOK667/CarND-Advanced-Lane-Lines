@@ -21,9 +21,9 @@ The goals / steps of this project are the following:
 
 [image1]: ./output_chessboard_cal/calibrated1.jpg "Undistorted"
 [image2]: ./output_step1/straight_lines2_step1_cal.jpg "step1 results"
-[image3]: ./output_step2/straight_lines2_step2_cal.jpg "step2 results"
-[image4]: ./output_step3/straight_lines2_step3_cal.jpg "step3 results"
-[image5]: ./output_step4/straight_lines2_step4_cal.jpg "step4 results"
+[image3]: ./output_step2/straight_lines2_step2_binary.jpg "step2 results"
+[image4]: ./output_step3/straight_lines2_step3_warp & hist.jpg "step3 results"
+[image5]: ./output_step4/straight_lines2_step4_linefit.jpg "step4 results"
 [image6]: ./examples/example_output.jpg "Output"
 [video1]: ./project_video.mp4 "Video"
 
@@ -74,13 +74,13 @@ I used a combination of color and gradient thresholds to generate a binary image
   - hls_binary : threshold (110, 255)
  
  Based on the above results, valid pixels are extracted as follows.
- 
-  - condition1 : '(gradx_binary == 1) | (grady_binary== 1) | (mag_binary == 1)'
-    to catch the edge lines any object in images
-  - condition1 : '(gray_binary == 1) & (dir_binary == 1)'
-    to catch the lane line and remove tar marks and tire marks on the lane in image
-  - combined_binary(final) : '(binary_condi1 & binary_condi2) | (hls_binary == 1)'
-    to merge condition1 and condition2 using AND condition, also hls binary is added
+
+  - condition1 : `(gradx_binary == 1) | (grady_binary== 1) | (mag_binary == 1)`
+        to catch the edge lines any object in images
+  - condition1 : `(gray_binary == 1) & (dir_binary == 1)`
+        to catch the lane line and remove tar marks and tire marks on the lane in image
+  - combined_binary(final) :`(binary_condi1 & binary_condi2) | (hls_binary == 1)`
+        to merge condition1 and condition2 using AND condition, also hls binary is added
 
 Here's an example of my output for this step. 
 
