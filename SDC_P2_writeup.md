@@ -187,11 +187,13 @@ If want to check the other image results, [click this link](./output_step4)
 
 # 3. Pipeline using test videos
 
-Through step1 ~ step4 procedure avobe, I try finding lanes on 'project_video.mp4', 'challenge_video.mp4'
+Through step1 ~ step4 procedure avobe, I tried finding lanes on 'project_video.mp4', 'challenge_video.mp4'
 
 Here's a my video result
 
-Here's a [link to my video result](./project_video_out.mp4)
+Here's a [link to my video result project_video_out](./project_video_out.mp4)  
+
+Here's a [link to my video result challenge_video_out](./project_video_out.mp4)
 
 ---
 
