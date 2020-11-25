@@ -201,4 +201,8 @@ Here's a [link to my video result challenge_video_out](./challenge_video_out.mp4
 
 #### 1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
 
-Here I'll talk about the approach I took, what techniques I used, what worked and why, where the pipeline might fail and how I might improve it if I were going to pursue this project further.  
+First, this project requires a lot of know-how. This is because you have to find lanes in environmental conditions that can occur in many situations (light conditions, stains on the road, color of road pavement, shadows, etc.). This requires a lot of experience about the threshold value of each filter and the conditions of the combination.
+
+Second, there are many cases in which a valid pixel is not detected depending on the state of the lane. In this case, it is necessary to provide a guaranteed distance through determination (view range) of the corresponding lane.
+
+Finally, it was confirmed that the vibration of values such as road characteristics (curvature, heading angle, offset) was large. Therefore, it is necessary to further apply filtering techniques that can suppress the change of the corresponding values. 
