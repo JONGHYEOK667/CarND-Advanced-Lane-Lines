@@ -19,11 +19,11 @@ The goals / steps of this project are the following:
 
 [//]: # (Image References)
 
-[image1]: ./output_images/calibrated1.jpg "Undistorted"
-[image2]: ./output_images/straight_lines2_step1_cal.jpg "Road Transformed"
-[image3]: ./examples/binary_combo_example.jpg "Binary Example"
-[image4]: ./examples/warped_straight_lines.jpg "Warp Example"
-[image5]: ./examples/color_fit_lines.jpg "Fit Visual"
+[image1]: ./output_chessboard_cal/calibrated1.jpg "Undistorted"
+[image2]: ./output_step1/straight_lines2_step1_cal.jpg "step1 results"
+[image3]: ./output_step2/straight_lines2_step2_cal.jpg "step2 results"
+[image4]: ./output_step3/straight_lines2_step3_cal.jpg "step3 results"
+[image5]: ./output_step4/straight_lines2_step4_cal.jpg "step4 results"
 [image6]: ./examples/example_output.jpg "Output"
 [video1]: ./project_video.mp4 "Video"
 
@@ -49,6 +49,8 @@ I then used the output `objpoints` and `imgpoints` to compute the camera calibra
 
 ![alt text][image1]
 
+
+
 ## 2. Pipeline using test images
 
 ### Step1 : Calibrate test image
@@ -56,11 +58,16 @@ I then used the output `objpoints` and `imgpoints` to compute the camera calibra
 To demonstrate this step, I will describe how I apply the distortion correction to one of the test images like this one:
 ![alt text][image2]
 
-if want to check the other results, [click this link](./output_images)
+If want to check the other image results, [click this link](./output_step1)
 
-#### 2. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image.  Provide an example of a binary image result.
+#### Step2 : Binary test image
 
-I used a combination of color and gradient thresholds to generate a binary image (thresholding steps at lines # through # in `another_file.py`).  Here's an example of my output for this step.  (note: this is not actually from one of the test images)
+2. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image.  Provide an example of a binary image result.
+
+I used a combination of color and gradient thresholds to generate a binary image
+  - Final 
+
+(thresholding steps at lines # through # in `another_file.py`).  Here's an example of my output for this step.  (note: this is not actually from one of the test images)
 
 ![alt text][image3]
 

@@ -19,11 +19,11 @@ The goals / steps of this project are the following:
 
 [//]: # (Image References)
 
-[image1]: ./output_images/calibrated1.jpg "Undistorted"
-[image2]: ./output_images/straight_lines2_step1_cal.jpg "Road Transformed"
-[image3]: ./examples/binary_combo_example.jpg "Binary Example"
-[image4]: ./examples/warped_straight_lines.jpg "Warp Example"
-[image5]: ./examples/color_fit_lines.jpg "Fit Visual"
+[image1]: ./output_chessboard_cal/calibrated1.jpg "Undistorted"
+[image2]: ./output_step1/straight_lines2_step1_cal.jpg "step1 results"
+[image3]: ./output_step2/straight_lines2_step2_cal.jpg "step2 results"
+[image4]: ./output_step3/straight_lines2_step3_cal.jpg "step3 results"
+[image5]: ./output_step4/straight_lines2_step4_cal.jpg "step4 results"
 [image6]: ./examples/example_output.jpg "Output"
 [video1]: ./project_video.mp4 "Video"
 
@@ -48,6 +48,8 @@ I start by preparing "object points", which will be the (x, y, z) coordinates of
 I then used the output `objpoints` and `imgpoints` to compute the camera calibration and distortion coefficients using the `cv2.calibrateCamera()` function.  I applied this distortion correction to the test image using the `cv2.undistort()` function and obtained this result: 
 
 ![alt text][image1]
+
+If want to check the other image results, [click this link](./output_step1)
 
 ## 2. Pipeline using test images
 
