@@ -20,10 +20,10 @@ The goals / steps of this project are the following:
 [//]: # (Image References)
 
 [image1]: ./output_chessboard_cal/calibrated1.jpg "Undistorted"
-[image2]: ./output_step1/straight_lines2_step1_cal.jpg "step1 results"
-[image3]: ./output_step2/straight_lines2_step2_cal.jpg "step2 results"
-[image4]: ./output_step3/straight_lines2_step3_cal.jpg "step3 results"
-[image5]: ./output_step4/straight_lines2_step4_cal.jpg "step4 results"
+[image2]: ./output_step1/straight_lines1_step1_cal.jpg "step1 results"
+[image3]: ./output_step2/straight_lines1_step2_binary.jpg "step2 results"
+[image4]: ./output_step3/straight_lines1_step3_warp & hist.jpg "step3 results"
+[image5]: ./output_step4/straight_lines1_step4_linefit.jpg "step4 results"
 [image6]: ./examples/example_output.jpg "Output"
 [video1]: ./project_video.mp4 "Video"
 
@@ -65,15 +65,49 @@ If want to check the other image results, [click this link](./output_step1)
 2. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image.  Provide an example of a binary image result.
 
 I used a combination of color and gradient thresholds to generate a binary image
-  - Final 
+  - gradx_binary : kernel size (=3), threshold (20, 100)
+  
+  
+  - grady_binary : kernel size (=3), threshold (60, 100)
+  
+  
+  - meg_binary : kernel size (=3), threshold (30, 180)
+  
+  
+  - dir_binary : kernel size (=3), threshold (0.8, 1.2)
+  
+  
+  - gray_binary : kernel size (=3), threshold (150, 220)  
+      gray_binary is used to remove tar marks and tire marks on the lane
+      
+      
+  - hls_binary : threshold (110, 255)
+ 
+ Based on the above results, valid pixels are extracted as follows.
 
-(thresholding steps at lines # through # in `another_file.py`).  Here's an example of my output for this step.  (note: this is not actually from one of the test images)
+  - condition1 : `(gradx_binary == 1) | (grady_binary== 1) | (mag_binary == 1)`  
+    to catch the edge lines any object in images
+    
+    
+  - condition1 : `(gray_binary == 1) & (dir_binary == 1)`  
+    to catch the lane line and remove tar marks and tire marks on the lane in image
+    
+    
+  - combined_binary(final) :`(binary_condi1 & binary_condi2) | (hls_binary == 1)`  
+    to merge condition1 and condition2 using AND condition, also hls binary is added
+
+Here's an example of my output for this step. 
 
 ![alt text][image3]
 
-#### 3. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
+If want to check the other image results, [click this link](./output_step2)
 
-The code for my perspective transform includes a function called `warper()`, which appears in lines 1 through 8 in the file `example.py` (output_images/examples/example.py) (or, for example, in the 3rd code cell of the IPython notebook).  The `warper()` function takes as inputs an image (`img`), as well as source (`src`) and destination (`dst`) points.  I chose the hardcode the source and destination points in the following manner:
+
+
+#### Step3 : Warp and Hist test image 
+
+
+The code for my perspective transform includes a function called `warper()`, The `warper()` function takes as inputs an image (`img`), as well as source (`src`) and destination (`dst`) points.  I chose the hardcode the source and destination points in the following manner:
 
 ```python
 src = np.float32(
@@ -97,9 +131,13 @@ This resulted in the following source and destination points:
 | 1127, 720     | 960, 720      |
 | 695, 460      | 960, 0        |
 
+
+
 I verified that my perspective transform was working as expected by drawing the `src` and `dst` points onto a test image and its warped counterpart to verify that the lines appear parallel in the warped image.
 
 ![alt text][image4]
+
+If want to check the other image results, [click this link](./output_step3)
 
 #### 4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
 
