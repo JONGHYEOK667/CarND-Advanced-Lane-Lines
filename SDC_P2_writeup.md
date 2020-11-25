@@ -193,7 +193,7 @@ Here's a my video result
 
 Here's a [link to my video result project_video_out](./project_video_out.mp4)  
 
-Here's a [link to my video result challenge_video_out](./project_video_out.mp4)
+Here's a [link to my video result challenge_video_out](./challenge_video_out.mp4)
 
 ---
 
