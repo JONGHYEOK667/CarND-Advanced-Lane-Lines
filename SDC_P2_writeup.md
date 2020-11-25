@@ -65,11 +65,28 @@ If want to check the other image results, [click this link](./output_step1)
 2. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image.  Provide an example of a binary image result.
 
 I used a combination of color and gradient thresholds to generate a binary image
-  - Final 
+  - gradx_binary : kernel size (=3), threshold (20, 100)
+  - grady_binary : kernel size (=3), threshold (60, 100)
+  - meg_binary : kernel size (=3), threshold (30, 180)
+  - dir_binary : kernel size (=3), threshold (0.8, 1.2)
+  - gray_binary : kernel size (=3), threshold (150, 220)
+      gray_binary is used to remove tar marks and tire marks on the lane
+  - hls_binary : threshold (110, 255)
+ 
+ Based on the above results, valid pixels are extracted as follows.
+ 
+  - condition1 : '(gradx_binary == 1) | (grady_binary== 1) | (mag_binary == 1)'
+    to catch the edge lines any object in images
+  - condition1 : '(gray_binary == 1) & (dir_binary == 1)'
+    to catch the lane line and remove tar marks and tire marks on the lane in image
+  - combined_binary(final) : '(binary_condi1 & binary_condi2) | (hls_binary == 1)'
+    to merge condition1 and condition2 using AND condition, also hls binary is added
 
-(thresholding steps at lines # through # in `another_file.py`).  Here's an example of my output for this step.  (note: this is not actually from one of the test images)
+Here's an example of my output for this step. 
 
 ![alt text][image3]
+
+If want to check the other image results, [click this link](./output_step2)
 
 #### 3. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
 
